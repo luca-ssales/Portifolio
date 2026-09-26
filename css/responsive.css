@@ -1,0 +1,521 @@
+/* ====================================================
+   FLUID & MODERN RESPONSIVE DESIGN SYSTEM
+   Supports: 4K / Ultra-wide, Desktop, Laptops, Tablets,
+   and Mobile (Portrait & Landscape)
+==================================================== */
+
+/* 1. Large Desktop / Wide Screens (> 1440px) */
+@media (min-width: 1441px) {
+  .dashboard-content {
+    grid-template-columns: minmax(0, 1fr) 350px;
+    gap: 32px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  }
+}
+
+/* 2. Standard Desktop / Laptops (1201px to 1440px) */
+@media (max-width: 1440px) {
+  .dashboard-content {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 24px;
+    padding: 20px 28px 48px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+  }
+
+  .hero-media-box {
+    height: 300px;
+  }
+}
+
+/* 3. Small Laptops / Landscape Tablets (1025px to 1200px) */
+@media (max-width: 1200px) {
+  .dashboard-content {
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 20px;
+    padding: 18px 22px 40px;
+  }
+
+  .featured-card {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 18px;
+    padding: 18px;
+  }
+
+  .hero-media-box {
+    height: 280px;
+  }
+
+  .hero-title {
+    font-size: 22px;
+  }
+
+  .hero-desc {
+    font-size: 13px;
+    min-height: auto;
+  }
+
+  .profile-banner-card {
+    padding: 20px 24px;
+    gap: 20px;
+  }
+
+  .profile-banner-img {
+    width: 92px;
+    height: 92px;
+  }
+
+  .profile-banner-title {
+    font-size: 23px;
+  }
+}
+
+/* 4. Tablets Landscape / Compact Desktop (881px to 1024px) */
+/* Transition to a balanced 1-column dashboard where the right panel forms a 2-column widget grid */
+@media (max-width: 1024px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 16px 20px 48px;
+  }
+
+  .featured-card {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .hero-media-box {
+    height: 300px;
+  }
+
+  /* Right Panel becomes a sleek 2-card side-by-side row on medium screens */
+  .right-panel {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  }
+}
+
+/* 5. Medium Tablets / Small Screens (769px to 880px) */
+@media (max-width: 880px) {
+  .sidebar-dock {
+    width: 74px;
+    padding: 20px 0 16px 0;
+  }
+
+  .top-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px 20px;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-box {
+    flex: 1;
+    width: auto;
+  }
+
+  .search-box:focus-within {
+    width: auto;
+  }
+
+  .featured-card {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-media-box {
+    height: 290px;
+  }
+}
+
+/* 6. Mobile Devices & Portrait Tablets (<= 768px) */
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .app-container {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Mobile Dock: Elegant Bottom Navigation Bar */
+  .sidebar-dock {
+    width: 100%;
+    height: 62px;
+    flex-direction: row;
+    padding: 6px 16px;
+    padding-bottom: calc(6px + env(safe-area-inset-bottom, 0px));
+    border-right: none;
+    border-top: 1px solid var(--border-light);
+    border-bottom: none;
+    order: 2;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.07);
+    z-index: 100;
+  }
+
+  .dock-logo,
+  .dock-footer {
+    display: none;
+  }
+
+  .dock-nav {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: 0;
+  }
+
+  .dock-item {
+    width: 50px;
+    height: 50px;
+  }
+
+  .dock-item.active::before {
+    display: none;
+  }
+
+  .dock-item.active .dock-icon-wrapper {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Mobile Dock Tooltip: floats above icon */
+  .dock-tooltip {
+    left: 50%;
+    top: auto;
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%) translateY(8px);
+  }
+
+  .dock-tooltip::before {
+    right: auto;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px 5px 0 5px;
+    border-color: rgba(15, 23, 42, 0.94) transparent transparent transparent;
+  }
+
+  .dock-item:hover .dock-tooltip {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Main Wrapper and Header */
+  .top-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 12px 16px;
+    position: sticky;
+    top: 0;
+  }
+
+  .category-pills {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .search-box {
+    flex: 1;
+    width: auto;
+    padding: 7px 12px;
+  }
+
+  .search-box input {
+    font-size: 12.5px;
+  }
+
+  .btn-primary-action {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  /* Content Padding with Bottom Navigation Clearance */
+  .dashboard-content {
+    padding: 14px 14px calc(80px + env(safe-area-inset-bottom, 12px)) 14px;
+    gap: 20px;
+  }
+
+  /* Profile Banner in Mobile */
+  .profile-banner-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .profile-banner-avatar-wrap {
+    margin: 0 auto;
+  }
+
+  .profile-banner-content {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .profile-welcome-tag {
+    margin: 0 auto;
+  }
+
+  .profile-banner-title {
+    font-size: 22px;
+  }
+
+  .profile-banner-role {
+    font-size: 14px;
+  }
+
+  .profile-banner-bio {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .profile-banner-footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    margin-top: 4px;
+  }
+
+  .profile-meta-pills {
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .profile-meta-pill {
+    font-size: 11.5px;
+    padding: 4px 10px;
+  }
+
+  .profile-actions-row {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Featured Card in Mobile */
+  .featured-card {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .hero-media-box {
+    height: 240px;
+  }
+
+  .hero-title {
+    font-size: 21px;
+  }
+
+  .hero-desc {
+    font-size: 13px;
+    min-height: auto;
+  }
+
+  .hero-bottom-bar {
+    padding: 10px 12px;
+  }
+
+  .hero-cta-btn {
+    padding: 8px 14px;
+    font-size: 12.5px;
+  }
+
+  .hero-tabs-nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .hero-tab-btn {
+    padding: 6px 14px;
+    font-size: 12px;
+    flex: 1;
+    text-align: center;
+  }
+
+  .hero-author-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Right Panel Widgets revert to single column in mobile */
+  .right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* 7. Extra Small Mobile Devices (<= 480px) */
+@media (max-width: 480px) {
+  .dashboard-content {
+    padding: 10px 10px calc(76px + env(safe-area-inset-bottom, 10px)) 10px;
+    gap: 16px;
+  }
+
+  .top-header {
+    padding: 10px 12px;
+  }
+
+  .header-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .search-box {
+    width: 100%;
+    order: 1;
+  }
+
+  .btn-primary-action {
+    flex: 1;
+    order: 2;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .lang-selector {
+    order: 3;
+    padding: 8px 10px;
+    font-size: 11.5px;
+  }
+
+  .projects-view-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .btn-return-home {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .profile-banner-card {
+    padding: 18px 14px;
+  }
+
+  .profile-banner-img {
+    width: 82px;
+    height: 82px;
+  }
+
+  .profile-banner-title {
+    font-size: 20px;
+  }
+
+  .profile-actions-row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .btn-profile-primary,
+  .btn-profile-ghost {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .hero-media-box {
+    height: 200px;
+  }
+
+  .hero-badge-top-left,
+  .hero-badge-timer {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  .hero-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .hero-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-author-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .btn-secondary-pill {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .sort-dropdown {
+    width: 100%;
+  }
+
+  .modal-card {
+    width: 95vw;
+    max-height: 92vh;
+    padding: 16px;
+    border-radius: var(--radius-md);
+  }
+}
